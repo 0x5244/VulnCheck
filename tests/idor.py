@@ -29,7 +29,7 @@ def test_idor(domain):
 
         result['details'] = "No IDOR vulnerabilities detected."
 
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         result['status'] = False
         result['details'] = f"IDOR test failed: {str(e)}"
         result['remediation'] = "Ensure that authorization checks are enforced in your application."

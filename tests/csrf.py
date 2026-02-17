@@ -40,7 +40,7 @@ def check_csrf_protection(domain):
         else:
             result['details'] = "All forms have CSRF tokens."
 
-    except (requests.exceptions.RequestException, Exception) as e:
+    except Exception as e:
         result['status'] = False
         result['details'] = f"CSRF protection check failed: {str(e)}"
         result['remediation'] = "Ensure that all forms are protected with CSRF tokens."

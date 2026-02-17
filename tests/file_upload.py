@@ -26,7 +26,7 @@ def test_file_upload(domain):
         else:
             result['details'] = "File upload handling appears secure."
 
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         result['status'] = False
         result['details'] = f"File upload test failed: {str(e)}"
         result['remediation'] = "Ensure proper validation and sanitization of uploaded files."

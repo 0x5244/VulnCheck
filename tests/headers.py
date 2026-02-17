@@ -33,7 +33,7 @@ def check_headers(domain):
         else:
             result['details'] = "All essential security headers are present."
 
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         result['status'] = False
         result['details'] = f"Header check failed: {str(e)}"
         result['remediation'] = "Ensure your server is correctly configured to send appropriate HTTP headers."

@@ -36,7 +36,7 @@ def check_cookie_settings(domain):
         else:
             result['details'] = "All cookies have appropriate security attributes."
 
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         result['status'] = False
         result['details'] = f"Cookie settings check failed: {str(e)}"
         result['remediation'] = "Ensure that your application sets cookies with secure attributes."

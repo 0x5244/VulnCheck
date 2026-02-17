@@ -38,7 +38,7 @@ def check_sensitive_data_exposure(domain):
 
         result['details'] = "No sensitive data exposure detected."
 
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         result['status'] = False
         result['details'] = f"Sensitive data exposure check failed: {str(e)}"
         result['remediation'] = "Ensure proper data handling and encryption in your application."

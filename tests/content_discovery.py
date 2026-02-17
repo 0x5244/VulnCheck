@@ -33,7 +33,7 @@ def content_discovery(domain):
         else:
             result['details'] = "No sensitive paths detected."
 
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         result['status'] = False
         result['details'] = f"Content discovery failed: {str(e)}"
         result['remediation'] = "Review your server configurations and ensure sensitive paths are protected."

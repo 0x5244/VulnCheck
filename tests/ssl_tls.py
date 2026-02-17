@@ -27,7 +27,7 @@ def check_ssl_certificate(domain):
             else:
                 days_left = (expiry_date - current_time).days
                 result['details'] = f"SSL certificate is valid. Expiry date: {expiry_date} ({days_left} days left)"
-    except Exception as e:
+    except (ssl.SSLError, socket.error, OSError) as e:
         result['status'] = False
         result['details'] = f"SSL/TLS check failed: {str(e)}"
         result['remediation'] = "Ensure your server is configured to use a valid SSL/TLS certificate."
