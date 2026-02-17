@@ -2,7 +2,7 @@
 
 import requests
 import base64
-import random
+import secrets
 import time
 import urllib.parse
 from selenium import webdriver
@@ -11,11 +11,12 @@ from tests.firewall_detection import check_for_firewall  # Ensure this is import
 
 def random_case(payload):
     """Randomly changes the case of each character in the payload"""
-    return ''.join(random.choice([c.upper(), c.lower()]) for c in payload)
+    return ''.join(secrets.choice([c.upper(), c.lower()]) for c in payload)
 
 def add_padding(payload):
     """Adds random padding around the payload to bypass detection"""
-    junk = ''.join(random.choices('abcdefghijklmnopqrstuvwxyz0123456789', k=5))
+    chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
+    junk = ''.join(secrets.choice(chars) for _ in range(5))
     return f"{junk}{payload}{junk}"
 
 def send_with_selenium(url, payload):

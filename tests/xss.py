@@ -28,7 +28,7 @@ def test_xss(domain):
         else:
             result['details'] = "No XSS vulnerabilities detected."
 
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         result['status'] = False
         result['details'] = f"XSS test failed: {str(e)}"
         result['remediation'] = "Review your application's input handling and ensure it is robust against XSS attacks."
