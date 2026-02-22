@@ -28,7 +28,7 @@ def test_unvalidated_redirects(domain):
         else:
             result['details'] = "No unvalidated redirects detected."
 
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         result['status'] = False
         result['details'] = f"Unvalidated redirects test failed: {str(e)}"
         result['remediation'] = "Ensure that redirect URLs are validated before performing redirects."

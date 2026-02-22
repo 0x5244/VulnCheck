@@ -31,7 +31,7 @@ def test_clickjacking(domain):
         else:
             result['details'] = "Clickjacking protections are in place."
 
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         result['status'] = False
         result['details'] = f"Clickjacking test failed: {str(e)}"
         result['remediation'] = "Ensure your server includes appropriate headers to prevent framing."

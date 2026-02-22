@@ -35,7 +35,7 @@ def test_authentication(domain):
         else:
             result['details'] = "Session cookies have appropriate security flags."
 
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         result['status'] = False
         result['details'] = f"Authentication test failed: {str(e)}"
         result['remediation'] = "Ensure that your authentication and session management mechanisms are secure."

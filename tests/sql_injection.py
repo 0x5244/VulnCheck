@@ -27,7 +27,7 @@ def test_sql_injection(domain):
         else:
             result['details'] = "No SQL injection vulnerabilities detected."
 
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         result['status'] = False
         result['details'] = f"SQL Injection test failed: {str(e)}"
         result['remediation'] = "Ensure proper error handling and input sanitization."

@@ -35,7 +35,7 @@ def check_security_misconfiguration(domain):
         else:
             result['details'] = "No security misconfigurations detected."
 
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         result['status'] = False
         result['details'] = f"Security misconfiguration check failed: {str(e)}"
         result['remediation'] = "Ensure that your server configurations follow security best practices."

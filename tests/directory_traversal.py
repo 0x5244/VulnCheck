@@ -35,7 +35,7 @@ def test_directory_traversal(domain):
 
         result['details'] = "No directory traversal vulnerabilities detected."
 
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         result['status'] = False
         result['details'] = f"Directory traversal test failed: {str(e)}"
         result['remediation'] = "Ensure proper input validation in your application."

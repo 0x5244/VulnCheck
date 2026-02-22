@@ -30,7 +30,7 @@ def check_http_methods(domain):
         else:
             result['details'] = "No dangerous HTTP methods enabled."
 
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         result['status'] = False
         result['details'] = f"HTTP methods check failed: {str(e)}"
         result['remediation'] = "Ensure that only necessary HTTP methods are enabled on your web server."
