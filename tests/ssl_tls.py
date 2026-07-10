@@ -7,11 +7,19 @@ from cryptography.hazmat.backends import default_backend
 from datetime import datetime, timezone
 from tests.firewall_detection import check_for_firewall
 
+
+def create_secure_ssl_context():
+    """Create a certificate-verifying client context that rejects legacy TLS."""
+    context = ssl.create_default_context()
+    context.minimum_version = ssl.TLSVersion.TLSv1_2
+    return context
+
+
 def check_ssl_certificate(domain):
     result = {'status': True, 'details': '', 'remediation': ''}
     
     try:
-        ctx = ssl.create_default_context()
+        ctx = create_secure_ssl_context()
         with ctx.wrap_socket(socket.socket(), server_hostname=domain) as s:
             s.settimeout(5)
             s.connect((domain, 443))

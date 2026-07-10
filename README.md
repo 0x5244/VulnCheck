@@ -40,7 +40,7 @@
 
 ### Prerequisites
 
-- Python 3.6 or higher
+- Python 3.10 or higher
 - `pip` package manager
 
 ### Clone the Repository
@@ -59,15 +59,6 @@ python3 -m venv venv
 source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 
 pip install -r requirements.txt
-```
-
-**Ensure `requirements.txt` includes all necessary packages:**
-
-```
-requests
-termcolor
-concurrent.futures
-[other dependencies]
 ```
 
 ---
